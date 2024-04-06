@@ -13,6 +13,12 @@ if(":" not in utcsearch):
             s = utcsearch + ":00"
         if (len(utcsearch) == 1):
             s = "+" + "0" + utcsearch[0] + ":00"
+
+if(utcsearch[0] != "-" and utcsearch[0] != "+"):
+    s = "+" + utcsearch
+if(len(s[1:len(s)].split(":")[0]) == 1):
+    s = s[0] + "0" + s[1:len(s)]
+
 print(s)
 with open('timezone_list.csv', 'r') as csv_file:
     reader = csv.reader(csv_file)
